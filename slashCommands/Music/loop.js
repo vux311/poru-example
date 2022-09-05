@@ -8,8 +8,8 @@ module.exports = {
   run: (client, interaction) => {
     const player = client.poru.players.get(interaction.guild.id);
 
-    if (player.loop === 0) {
-      player.TrackRepeat();
+    if (player.loop === "NONE")) {
+      player.setLoop('TRACK');
 
       const embed = new EmbedBuilder()
         .setColor('White')
@@ -18,8 +18,8 @@ module.exports = {
       interaction.reply({
         embeds: [embed],
       });
-    } else if (player.loop === 1) {
-      player.QueueRepeat();
+    } else if (player.loop === "TRACK") {
+      player.setLoop('QUEUE');
 
       const embed = new EmbedBuilder()
         .setColor('White')
@@ -28,8 +28,8 @@ module.exports = {
       interaction.reply({
         embeds: [embed],
       });
-    } else if (player.loop === 2) {
-      player.DisableRepeat();
+    } else if (player.loop === "QUEUE" {
+      player.setLoop('NONE');
 
       const embed = new EmbedBuilder()
         .setColor('White')
